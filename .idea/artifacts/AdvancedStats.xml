@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AdvancedStats">
+    <output-path>$PROJECT_DIR$/out/artifacts/AdvancedStats</output-path>
+    <root id="archive" name="AdvancedStats.jar">
+      <element id="module-output" name="AdvancedStats" />
+    </root>
+  </artifact>
+</component>

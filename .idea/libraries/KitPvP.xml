@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="KitPvP">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../KitPvP/out/artifacts/KitPvP/KitPvP.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
