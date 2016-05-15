@@ -1,6 +1,6 @@
 # AdvancedStats
 The stats plugin for ExellPvP
 
-#Depenencies
+##Depenencies
 * KitPvP(https://github.com/Exellanix/KitPvP)
 * Vault
