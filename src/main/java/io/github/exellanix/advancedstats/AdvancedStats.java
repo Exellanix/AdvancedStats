@@ -2,8 +2,13 @@ package io.github.exellanix.advancedstats;
 
 import io.github.exellanix.advancedstats.commands.Stats;
 import io.github.exellanix.advancedstats.events.PlayerJoin;
+import io.github.exellanix.advancedstats.scoreboard.BoardManager;
+import io.github.exellanix.advancedstats.scoreboard.BoardUtils;
+import io.github.exellanix.advancedstats.tasks.ScoreboardUpdate;
 import me.exellanix.kitpvp.KitPvPAPI;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
@@ -17,11 +22,13 @@ import java.util.logging.Logger;
  */
 public class AdvancedStats extends JavaPlugin {
 
-    public static Plugin plugin;
+    private static AdvancedStats instance;
 
-    public static Economy econ = null;
+    private Economy econ = null;
 
-    public static KitPvPAPI kit = null;
+    private KitPvPAPI kit = null;
+
+    private BoardManager berdManger;
 
     private boolean setupKitPvPAPI() {
         RegisteredServiceProvider<KitPvPAPI> kitpvpapi = getServer().getServicesManager().getRegistration(KitPvPAPI.class);
@@ -61,8 +68,18 @@ public class AdvancedStats extends JavaPlugin {
 
             registerEvents();
             registerCommands();
-            plugin = this;
-
+            instance = this;
+            berdManger = new BoardManager();
+            getServer().getScheduler().runTaskTimer(this, () -> {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    BoardUtils.updateScoreboard(berdManger.getBoard(p));
+                }
+            }, 0, 10);
+            getServer().getScheduler().runTaskTimer(this, () -> {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    BoardUtils.swapObjectives(berdManger.getBoard(p));
+                }
+            }, 5, 10);
             logger.info(pdfFile.getName() + " has been enabled! (V." + pdfFile.getVersion());
         }
     }
@@ -86,4 +103,19 @@ public class AdvancedStats extends JavaPlugin {
         getCommand("stats").setExecutor(new Stats());
     }
 
+    public static AdvancedStats getSingleton() {
+        return instance;
+    }
+
+    public Economy getEcon() {
+        return econ;
+    }
+
+    public KitPvPAPI getKit() {
+        return kit;
+    }
+
+    public BoardManager getBoardManager() {
+        return berdManger;
+    }
 }

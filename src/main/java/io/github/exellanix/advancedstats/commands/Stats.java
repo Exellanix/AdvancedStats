@@ -24,18 +24,18 @@ public class Stats implements CommandExecutor {
                     player.sendMessage(
                             ChatColor.GREEN + "" + ChatColor.BOLD + "----== Stats of " + player.getName() + " ==----");
                     player.sendMessage(" ");
-                    player.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Balance: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.econ.getBalance(player));
+                    player.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Balance: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.getSingleton().getEcon().getBalance(player));
                     player.sendMessage(" ");
-                    player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.kit.getPlayerStats(player).getTotalKills());
+                    player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills());
                     player.sendMessage(" ");
-                    player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Deaths: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.kit.getPlayerStats(player).getTotalDeaths());
+                    player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Deaths: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths());
                     player.sendMessage(" ");
-                    player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: " + ChatColor.WHITE + ChatColor.BOLD + df.format(((double) AdvancedStats.kit.getPlayerStats(player).getTotalKills()
-                            / AdvancedStats.kit.getPlayerStats(player).getTotalDeaths())));
+                    player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: " + ChatColor.WHITE + ChatColor.BOLD + df.format(((double) AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills()
+                            / AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths())));
                     player.sendMessage(" ");
-                    if (AdvancedStats.kit.getPlayerKits().get(player) != null) {
+                    if (AdvancedStats.getSingleton().getKit().getPlayerKits().get(player) != null) {
                         player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + ""
-                                + ChatColor.BOLD + AdvancedStats.kit.getPlayerKits().get(player).getName());
+                                + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerKits().get(player).getName());
                     } else {
                         player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + ""
                                 + ChatColor.BOLD + "None");
@@ -52,18 +52,18 @@ public class Stats implements CommandExecutor {
                         sender.sendMessage(
                                 ChatColor.GREEN + "" + ChatColor.BOLD + "----== Stats of " + online.getName() + " ==----");
                         sender.sendMessage(" ");
-                        sender.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Balance: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.econ.getBalance(online));
+                        sender.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Balance: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.getSingleton().getEcon().getBalance(online));
                         sender.sendMessage(" ");
-                        sender.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: " + ChatColor.WHITE +AdvancedStats.kit.getPlayerStats(online).getTotalKills());
+                        sender.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: " + ChatColor.WHITE +AdvancedStats.getSingleton().getKit().getPlayerStats(online).getTotalKills());
                         sender.sendMessage(" ");
-                        sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Deaths: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.kit.getPlayerStats(online).getTotalDeaths());
+                        sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Deaths: " + ChatColor.WHITE + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerStats(online).getTotalDeaths());
                         sender.sendMessage(" ");
-                        sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: " + ChatColor.WHITE + ChatColor.BOLD + df.format(((double) AdvancedStats.kit.getPlayerStats(online).getTotalKills()
-                                / AdvancedStats.kit.getPlayerStats(online).getTotalDeaths())));
+                        sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: " + ChatColor.WHITE + ChatColor.BOLD + df.format(((double) AdvancedStats.getSingleton().getKit().getPlayerStats(online).getTotalKills()
+                                / AdvancedStats.getSingleton().getKit().getPlayerStats(online).getTotalDeaths())));
                         sender.sendMessage(" ");
-                        if (AdvancedStats.kit.getPlayerKits().get(online) != null) {
+                        if (AdvancedStats.getSingleton().getKit().getPlayerKits().get(online) != null) {
                             sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + ""
-                                    + ChatColor.BOLD + AdvancedStats.kit.getPlayerKits().get(online).getName());
+                                    + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerKits().get(online).getName());
                         } else {
                             sender.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + ""
                                     + ChatColor.BOLD + "None");

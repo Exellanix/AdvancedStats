@@ -1,0 +1,9 @@
+name: AdvancedStats
+main: io.github.exellanix.advancedstats.AdvancedStats
+version: 1.0
+authors: [Exellanix, Mac_Genius]
+depend: [KitPvP]
+commands:
+  stats:
+    description: osidfj
+    usage: osidfj

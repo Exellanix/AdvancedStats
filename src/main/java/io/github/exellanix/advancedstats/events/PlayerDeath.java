@@ -21,7 +21,7 @@ public class PlayerDeath implements Listener {
         if (event.getEntity() instanceof Player) {
             Player player = event.getEntity();
             Player killer = event.getEntity().getKiller();
-            EconomyResponse r = AdvancedStats.econ.depositPlayer(killer, 1.00);
+            EconomyResponse r = AdvancedStats.getSingleton().getEcon().depositPlayer(killer, 1.00);
             if (r.transactionSuccess()) {
                 killer.sendMessage(ChatColor.GREEN + "You have recieved $1 for killing" +  player.getDisplayName());
             }
