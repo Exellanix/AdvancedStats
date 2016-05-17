@@ -1,5 +1,6 @@
 package io.github.exellanix.advancedstats.scoreboard;
 
+import io.github.exellanix.advancedstats.AdvancedStats;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
@@ -47,6 +48,7 @@ public class BoardMessage {
 
     public void setMessage1(String message) {
         if (!team.getPrefix().equals(message)) {
+            AdvancedStats.getSingleton().getLogger().info("Original: \"" + team.getPrefix() + "\" New: \"" + message + "\"");
             this.message = message;
             if (message.length() < 17) {
                 cycle = false;
@@ -62,6 +64,7 @@ public class BoardMessage {
 
     public void setMessage2(String message) {
         if (!team.getSuffix().equals(message)) {
+            AdvancedStats.getSingleton().getLogger().info("Original: \"" + team.getSuffix() + "\" New: \"" + message + "\"");
             this.message = message;
             if (message.length() < 17) {
                 team.setSuffix(message);

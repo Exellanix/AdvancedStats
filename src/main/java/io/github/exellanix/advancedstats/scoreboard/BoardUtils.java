@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class BoardUtils {
     private static int objName = 0;
     private static DecimalFormat df = new DecimalFormat("#,##0.00");
+    private static String objDisplayName = ChatColor.GREEN + "" + ChatColor.BOLD + "Exell"
+            + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "PvP";
 
     public static void clearEntries(Scoreboard scoreboard) {
         for (String entry : new ArrayList<>(scoreboard.getEntries())) {
@@ -35,8 +37,9 @@ public class BoardUtils {
         Objective obj = boards.getActive();
 
         boards.showMessage(10);
-        obj.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Exell"
-                + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "PvP");
+        if (!obj.getDisplayName().equals(objDisplayName)) {
+            obj.setDisplayName(objDisplayName);
+        }
 
         boards.showMessage(15);
         boards.getBoardMessage(15).setMessage1(ChatColor.GREEN + "Welcome, ");
@@ -86,8 +89,9 @@ public class BoardUtils {
             boards.getBoardMessage(5).setMessage2(ChatColor.BOLD + "None");
 
         }
-
-        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+        if (obj.getDisplaySlot() != DisplaySlot.SIDEBAR){
+            obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+        }
 
         objName++;
         objName = objName % 10;
