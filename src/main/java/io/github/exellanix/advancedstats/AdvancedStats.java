@@ -74,12 +74,7 @@ public class AdvancedStats extends JavaPlugin {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     BoardUtils.updateScoreboard(berdManger.getBoard(p));
                 }
-            }, 0, 10);
-            getServer().getScheduler().runTaskTimer(this, () -> {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    BoardUtils.swapObjectives(berdManger.getBoard(p));
-                }
-            }, 5, 10);
+            }, 0, 5);
             logger.info(pdfFile.getName() + " has been enabled! (V." + pdfFile.getVersion());
         }
     }

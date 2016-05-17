@@ -5,7 +5,6 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.text.DecimalFormat;
@@ -31,57 +30,62 @@ public class BoardUtils {
     }
 
     public static void loadScores(PlayerBoards boards) {
-        Scoreboard disabled = boards.getScoreboard();
         Player player = boards.getPlayer();
 
-        Objective obj = boards.resetDeactiveObjective();
+        Objective obj = boards.getActive();
 
-        obj.setDisplayName(
-                ChatColor.GREEN + "" + ChatColor.BOLD + "Exell" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "PvP");
-        Score score = obj.getScore(ChatColor.GREEN + "Welcome, " + player.getName() + "!");
-        score.setScore(10);
+        boards.showMessage(10);
+        obj.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Exell"
+                + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "PvP");
 
-        Score score8 = obj.getScore("              ");
-        score8.setScore(9);
+        boards.showMessage(15);
+        boards.getBoardMessage(15).setMessage1(ChatColor.GREEN + "Welcome, ");
+        boards.getBoardMessage(15).setMessage2(ChatColor.GREEN + player.getName() + "!");
 
-        Score score7 = obj.getScore(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Balance: " + ChatColor.WHITE + ""
-                + ChatColor.BOLD + AdvancedStats.getSingleton().getEcon().getBalance(player));
-        score7.setScore(8);
+        boards.showMessage(14);
+        boards.getBoardMessage(14).setMessage1(" ");
 
-        Score score1 = obj.getScore("           ");
-        score1.setScore(7);
+        boards.showMessage(13);
+        boards.getBoardMessage(13).setMessage1(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Balance: ");
+        boards.getBoardMessage(13).setMessage2(ChatColor.BOLD + "" + AdvancedStats.getSingleton().getEcon().getBalance(player));
 
-        Score score2 = obj.getScore(ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: " + ChatColor.WHITE + ""
-                + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills());
-        score2.setScore(6);
+        boards.showMessage(12);
+        boards.getBoardMessage(12).setMessage1(" ");
 
-        Score score3 = obj.getScore("      ");
-        score3.setScore(5);
+        boards.showMessage(11);
+        boards.getBoardMessage(11).setMessage1(ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: ");
+        boards.getBoardMessage(11).setMessage2(ChatColor.BOLD + ""
+                + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills());
 
-        Score score4 = obj.getScore(ChatColor.RED + "" + ChatColor.BOLD + "Deaths: " + ChatColor.WHITE + ""
-                + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths());
-        score4.setScore(4);
+        boards.showMessage(10);
+        boards.getBoardMessage(10).setMessage1(" ");
 
-        Score score5 = obj.getScore(" ");
-        score5.setScore(3);
+        boards.showMessage(9);
+        boards.getBoardMessage(9).setMessage1(ChatColor.RED + "" + ChatColor.BOLD + "Deaths: ");
+        boards.getBoardMessage(9).setMessage2(ChatColor.BOLD + ""
+                + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths());
 
-        Score score6 = obj.getScore(ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: " + ChatColor.WHITE + ""
-                + ChatColor.BOLD + df.format(((double) AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills()
+        boards.showMessage(8);
+        boards.getBoardMessage(8).setMessage1(" ");
+
+        boards.showMessage(7);
+        boards.getBoardMessage(7).setMessage1(ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: ");
+        boards.getBoardMessage(7).setMessage2(ChatColor.BOLD + df.format(((double) AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills()
                 / AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths())));
-        score6.setScore(2);
 
-        Score score9 = obj.getScore("               ");
-        score9.setScore(1);
+        boards.showMessage(6);
+        boards.getBoardMessage(6).setMessage1(" ");
 
-        Score score10;
+        boards.showMessage(5);
+
         if (AdvancedStats.getSingleton().getKit().getPlayerKits().get(player) != null) {
-            score10 = obj.getScore(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + ""
-                    + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerKits().get(player).getName());
+            boards.getBoardMessage(5).setMessage1(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: ");
+            boards.getBoardMessage(5).setMessage2(ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerKits().get(player).getName());
         } else {
-            score10 = obj.getScore(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + ""
-                    + ChatColor.BOLD + "None");
+            boards.getBoardMessage(5).setMessage1(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: ");
+            boards.getBoardMessage(5).setMessage2(ChatColor.BOLD + "None");
+
         }
-        score10.setScore(0);
 
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
@@ -89,14 +93,8 @@ public class BoardUtils {
         objName = objName % 10;
     }
 
-    public static void swapObjectives(PlayerBoards boards) {
-        Objective temp = boards.getActive();
-        boards.setActive(boards.getDeactive());
-        boards.setDeactive(temp);
-        boards.getActive().setDisplaySlot(DisplaySlot.SIDEBAR);
-    }
-
     public static void updateScoreboard(PlayerBoards boards) {
         loadScores(boards);
+        boards.cycleMessages();
     }
 }
