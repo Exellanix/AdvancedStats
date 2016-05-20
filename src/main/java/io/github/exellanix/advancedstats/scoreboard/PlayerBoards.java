@@ -16,6 +16,7 @@ public class PlayerBoards {
     private Objective active;
     private HashMap<Integer, BoardMessage> messages;
     private Player player;
+    private int width = 18;
 
     public PlayerBoards(Player player) {
         messages = new HashMap<>();
@@ -65,22 +66,22 @@ public class PlayerBoards {
     }
 
     private void setupScoreboard() {
-        messages.put(0, new BoardMessage(scoreboard, 0, "board_team_0", ChatColor.BLACK + "" + ChatColor.WHITE));
-        messages.put(1, new BoardMessage(scoreboard, 1, "board_team_1", ChatColor.DARK_BLUE + "" + ChatColor.WHITE));
-        messages.put(2, new BoardMessage(scoreboard, 2, "board_team_2", ChatColor.DARK_GREEN + "" + ChatColor.WHITE));
-        messages.put(3, new BoardMessage(scoreboard, 3, "board_team_3", ChatColor.DARK_AQUA + "" + ChatColor.WHITE));
-        messages.put(4, new BoardMessage(scoreboard, 4, "board_team_4", ChatColor.DARK_RED + "" + ChatColor.WHITE));
-        messages.put(5, new BoardMessage(scoreboard, 5, "board_team_5", ChatColor.DARK_PURPLE + "" + ChatColor.WHITE));
-        messages.put(6, new BoardMessage(scoreboard, 6, "board_team_6", ChatColor.GOLD + "" + ChatColor.WHITE));
-        messages.put(7, new BoardMessage(scoreboard, 7, "board_team_7", ChatColor.GRAY + "" + ChatColor.WHITE));
-        messages.put(8, new BoardMessage(scoreboard, 8, "board_team_8", ChatColor.DARK_GRAY + "" + ChatColor.WHITE));
-        messages.put(9, new BoardMessage(scoreboard, 9, "board_team_9", ChatColor.BLUE + "" + ChatColor.WHITE));
-        messages.put(10, new BoardMessage(scoreboard, 10, "board_team_10", ChatColor.GREEN + "" + ChatColor.WHITE));
-        messages.put(11, new BoardMessage(scoreboard, 11, "board_team_11", ChatColor.AQUA + "" + ChatColor.WHITE));
-        messages.put(12, new BoardMessage(scoreboard, 12, "board_team_12", ChatColor.RED + "" + ChatColor.WHITE));
-        messages.put(13, new BoardMessage(scoreboard, 13, "board_team_13", ChatColor.LIGHT_PURPLE + "" + ChatColor.WHITE));
-        messages.put(14, new BoardMessage(scoreboard, 14, "board_team_14", ChatColor.YELLOW + "" + ChatColor.WHITE));
-        messages.put(15, new BoardMessage(scoreboard, 15, "board_team_15", ChatColor.WHITE + "" + ChatColor.WHITE));
+        messages.put(0, new BoardMessage(scoreboard, 0, width, MessageType.CYCLE_TOGETHER, "board_team_0", ChatColor.BLACK + "" + ChatColor.WHITE));
+        messages.put(1, new BoardMessage(scoreboard, 1, width, MessageType.CYCLE_TOGETHER, "board_team_1", ChatColor.DARK_BLUE + "" + ChatColor.WHITE));
+        messages.put(2, new BoardMessage(scoreboard, 2, width, MessageType.CYCLE_TOGETHER, "board_team_2", ChatColor.DARK_GREEN + "" + ChatColor.WHITE));
+        messages.put(3, new BoardMessage(scoreboard, 3, width, MessageType.CYCLE_TOGETHER, "board_team_3", ChatColor.DARK_AQUA + "" + ChatColor.WHITE));
+        messages.put(4, new BoardMessage(scoreboard, 4, width, MessageType.CYCLE_TOGETHER, "board_team_4", ChatColor.DARK_RED + "" + ChatColor.WHITE));
+        messages.put(5, new BoardMessage(scoreboard, 5, width, MessageType.CYCLE_TOGETHER, "board_team_5", ChatColor.DARK_PURPLE + "" + ChatColor.WHITE));
+        messages.put(6, new BoardMessage(scoreboard, 6, width, MessageType.CYCLE_TOGETHER, "board_team_6", ChatColor.GOLD + "" + ChatColor.WHITE));
+        messages.put(7, new BoardMessage(scoreboard, 7, width, MessageType.CYCLE_TOGETHER, "board_team_7", ChatColor.GRAY + "" + ChatColor.WHITE));
+        messages.put(8, new BoardMessage(scoreboard, 8, width, MessageType.CYCLE_TOGETHER, "board_team_8", ChatColor.DARK_GRAY + "" + ChatColor.WHITE));
+        messages.put(9, new BoardMessage(scoreboard, 9, width, MessageType.CYCLE_TOGETHER, "board_team_9", ChatColor.BLUE + "" + ChatColor.WHITE));
+        messages.put(10, new BoardMessage(scoreboard, 10, width, MessageType.CYCLE_TOGETHER, "board_team_10", ChatColor.GREEN + "" + ChatColor.WHITE));
+        messages.put(11, new BoardMessage(scoreboard, 11, width, MessageType.CYCLE_TOGETHER, "board_team_11", ChatColor.AQUA + "" + ChatColor.WHITE));
+        messages.put(12, new BoardMessage(scoreboard, 12, width, MessageType.CYCLE_TOGETHER, "board_team_12", ChatColor.RED + "" + ChatColor.WHITE));
+        messages.put(13, new BoardMessage(scoreboard, 13, width, MessageType.CYCLE_TOGETHER, "board_team_13", ChatColor.LIGHT_PURPLE + "" + ChatColor.WHITE));
+        messages.put(14, new BoardMessage(scoreboard, 14, width, MessageType.CYCLE_TOGETHER, "board_team_14", ChatColor.YELLOW + "" + ChatColor.WHITE));
+        messages.put(15, new BoardMessage(scoreboard, 15, width, MessageType.CYCLE_TOGETHER, "board_team_15", ChatColor.WHITE + "" + ChatColor.WHITE));
     }
 
     public void showMessage(int value) {
