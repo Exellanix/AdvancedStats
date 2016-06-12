@@ -41,44 +41,38 @@ public class BoardUtils {
         }
 
         boards.showMessage(15);
-        boards.getBoardMessage(15).setMessage1((ChatColor.GREEN + "Hi, " + player.getName() + "! Welcome to Kit" + ChatColor.DARK_PURPLE + "PvP!").trim());
+        boards.getBoardMessage(15).setMessage1((ChatColor.GREEN + "Hi, " + player.getName() + "! Welcome to Exell" + ChatColor.DARK_PURPLE + "PvP" + ChatColor.GREEN + "!").trim());
 
         boards.showMessage(14);
         boards.getBoardMessage(14).setMessage1(" ");
 
         boards.showMessage(13);
-        boards.getBoardMessage(13).setMessage1((ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Balance: " + ChatColor.WHITE + "" + ChatColor.BOLD + "" + AdvancedStats.getSingleton().getEcon().getBalance(player)).trim());
+        boards.getBoardMessage(13).setMessage1(ChatColor.DARK_PURPLE + "> " + ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: " + ChatColor.WHITE + "" + ChatColor.BOLD + ""
+                + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills());
 
         boards.showMessage(12);
         boards.getBoardMessage(12).setMessage1(" ");
 
         boards.showMessage(11);
-        boards.getBoardMessage(11).setMessage1(ChatColor.GREEN + "" + ChatColor.BOLD + "Kills: " + ChatColor.WHITE + "" + ChatColor.BOLD + ""
-                + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills());
+        boards.getBoardMessage(11).setMessage1(ChatColor.DARK_PURPLE + "> " + ChatColor.RED + "" + ChatColor.BOLD + "Deaths: " + ChatColor.WHITE + "" + ChatColor.BOLD + ""
+                + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths());
 
         boards.showMessage(10);
         boards.getBoardMessage(10).setMessage1(" ");
 
         boards.showMessage(9);
-        boards.getBoardMessage(9).setMessage1(ChatColor.RED + "" + ChatColor.BOLD + "Deaths: " + ChatColor.WHITE + "" + ChatColor.BOLD + ""
-                + AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths());
+        boards.getBoardMessage(9).setMessage1(ChatColor.DARK_PURPLE + "> " + ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: " + ChatColor.WHITE + "" + ChatColor.BOLD + df.format(((double) AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills()
+                / AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths())));
 
         boards.showMessage(8);
         boards.getBoardMessage(8).setMessage1(" ");
 
         boards.showMessage(7);
-        boards.getBoardMessage(7).setMessage1(ChatColor.YELLOW + "" + ChatColor.BOLD + "KDR: " + ChatColor.WHITE + "" + ChatColor.BOLD + df.format(((double) AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalKills()
-                / AdvancedStats.getSingleton().getKit().getPlayerStats(player).getTotalDeaths())));
-
-        boards.showMessage(6);
-        boards.getBoardMessage(6).setMessage1(" ");
-
-        boards.showMessage(5);
 
         if (AdvancedStats.getSingleton().getKit().getPlayerKits().get(player) != null) {
-            boards.getBoardMessage(5).setMessage1(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + "" + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerKits().get(player).getName());
+            boards.getBoardMessage(7).setMessage1(ChatColor.DARK_PURPLE + "> " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + "" + ChatColor.BOLD + AdvancedStats.getSingleton().getKit().getPlayerKits().get(player).getName());
         } else {
-            boards.getBoardMessage(5).setMessage1(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + "" + ChatColor.BOLD + "None");
+            boards.getBoardMessage(7).setMessage1(ChatColor.DARK_PURPLE + "> " + ChatColor.DARK_RED + "" + ChatColor.BOLD + "Kit: " + ChatColor.WHITE + "" + ChatColor.BOLD + "None");
 
         }
 
