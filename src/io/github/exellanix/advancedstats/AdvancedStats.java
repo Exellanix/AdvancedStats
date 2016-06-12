@@ -4,12 +4,10 @@ import io.github.exellanix.advancedstats.commands.Stats;
 import io.github.exellanix.advancedstats.events.PlayerJoin;
 import io.github.exellanix.advancedstats.scoreboard.BoardManager;
 import io.github.exellanix.advancedstats.scoreboard.BoardUtils;
-import io.github.exellanix.advancedstats.tasks.ScoreboardUpdate;
 import me.exellanix.kitpvp.KitPvPAPI;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -28,7 +26,7 @@ public class AdvancedStats extends JavaPlugin {
 
     private KitPvPAPI kit = null;
 
-    private BoardManager berdManger;
+    private io.github.exellanix.advancedstats.scoreboard.BoardManager berdManger;
 
     private boolean setupKitPvPAPI() {
         RegisteredServiceProvider<KitPvPAPI> kitpvpapi = getServer().getServicesManager().getRegistration(KitPvPAPI.class);
@@ -69,7 +67,7 @@ public class AdvancedStats extends JavaPlugin {
             registerEvents();
             registerCommands();
             instance = this;
-            berdManger = new BoardManager();
+            berdManger = new io.github.exellanix.advancedstats.scoreboard.BoardManager();
             getServer().getScheduler().runTaskTimer(this, () -> {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     BoardUtils.updateScoreboard(berdManger.getBoard(p));

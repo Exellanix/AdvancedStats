@@ -6,4 +6,4 @@ depend: [KitPvP]
 commands:
   stats:
     description: osidfj
-    usage: osidfj
+    usage: /<command>
